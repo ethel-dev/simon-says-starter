@@ -1,0 +1,181 @@
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    flex-direction: column;
+    color: rgba(255, 255, 255, 0.552);
+    font-family: "Georgia";
+    filter: sepia(50%)
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 20px;
+    width: 80vmin; /* Use vmin to make the grid responsive */
+    height: 80vmin; /* Use vmin to make the grid responsive */
+    margin-bottom: 25px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.552);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-radius 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.60);
+    filter: brightness(50%)
+}
+
+.header {
+    text-align: center;
+}
+
+.ui-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.ui-element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background-color: #464646;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Georgia";
+}
+
+div.button-container .lit,
+div.button-container .correct,
+div.button-container .incorrect {
+    border-radius: 30px;
+}
+
+.header {
+    text-align: center;
+}
+
+.ui-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.ui-element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background-color: #464646;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Georgia"
+}
+
+:root {
+    --pastel-red: color(display-p3 1 0.50196 0.50196); /* Pastel Red */
+    --pastel-orange: color(display-p3 1 0.69804 0.50196); /* Pastel Orange */
+    --pastel-yellow: color(display-p3 1 1 0.50196); /* Pastel Yellow */
+    --pastel-lime: color(display-p3 0.50196 1 0.50196); /* Pastel Lime */
+    --pastel-blue: color(display-p3 0.50196 0.50196 1); /* Pastel Blue */
+    --pastel-indigo: color(display-p3 0.69804 0.50196 1); /* Pastel Indigo */
+    --pastel-violet: color(display-p3 0.85098 0.50196 1); /* Pastel Violet */
+    --pastel-pink: color(display-p3 1 0.75294 0.90196); /* Pastel Pink */
+    --pastel-brown: color(display-p3 0.8 0.54118 0.54118); /* Pastel Brown */
+    --darker-pastel-lime: color(display-p3 0.17647 1 0.17647); /* Darker Pastel Lime */
+    --darker-pastel-red: color(display-p3 1 0.3098 0.3098); /* Darker Pastel Red */
+}
+
+div.button-container .lit, div.button-container .correct, div.button-container .incorrect {
+    border-radius: 50%;
+    filter: brightness(120%);
+}
+
+div.button-container .lit:nth-child(1) {
+    background-color: var(--pastel-red); /* Pastel Red */
+    box-shadow: 0 0 20px var(--pastel-red); /* Pastel Red glow effect */
+}
+
+div.button-container .lit:nth-child(2) {
+    background-color: var(--pastel-orange); /* Pastel Orange */
+    box-shadow: 0 0 20px var(--pastel-orange); /* Pastel Orange glow effect */
+}
+
+div.button-container .lit:nth-child(3) {
+    background-color: var(--pastel-yellow); /* Pastel Yellow */
+    box-shadow: 0 0 20px var(--pastel-yellow); /* Pastel Yellow glow effect */
+}
+
+div.button-container .lit:nth-child(4) {
+    background-color: var(--pastel-lime); /* Pastel Lime */
+    box-shadow: 0 0 20px var(--pastel-lime); /* Pastel Lime glow effect */
+}
+
+div.button-container .lit:nth-child(5) {
+    background-color: var(--pastel-blue); /* Pastel Blue */
+    box-shadow: 0 0 20px var(--pastel-blue); /* Pastel Blue glow effect */
+}
+
+div.button-container .lit:nth-child(6) {
+    background-color: var(--pastel-indigo); /* Pastel Indigo */
+    box-shadow: 0 0 20px var(--pastel-indigo); /* Pastel Indigo glow effect */
+}
+
+div.button-container .lit:nth-child(7) {
+    background-color: var(--pastel-violet); /* Pastel Violet */
+    box-shadow: 0 0 20px var(--pastel-violet); /* Pastel Violet glow effect */
+}
+
+div.button-container .lit:nth-child(8) {
+    background-color: var(--pastel-pink); /* Pastel Pink */
+    box-shadow: 0 0 20px var(--pastel-pink); /* Pastel Pink glow effect */
+}
+
+div.button-container .lit:nth-child(9) {
+    background-color: var(--pastel-brown); /* Pastel Brown */
+    box-shadow: 0 0 20px var(--pastel-brown); /* Pastel Brown glow effect */
+}
+
+div.button-container .correct {
+    background-color: var(--darker-pastel-lime); /* Darker Pastel Lime */
+    box-shadow: 0 0 20px var(--darker-pastel-lime); /* Darker Pastel Lime glow effect */
+}
+
+div.button-container .incorrect {
+    background-color: var(--darker-pastel-red); /* Darker Pastel Red */
+    box-shadow: 0 0 20px var(--darker-pastel-red); /* Darker Pastel Red glow effect */
+}
