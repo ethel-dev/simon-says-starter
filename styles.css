@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     color: rgba(255, 255, 255, 0.552);
     font-family: "Georgia";
-    filter: sepia(50%)
+    filter: sepia(50%);
 }
 
 .button-container {

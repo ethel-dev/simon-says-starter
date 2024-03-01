@@ -1,3 +1,18 @@
+// sequence = [0, 1, 4, 5]
+// await displaySequence(sequence);
+async function displaySequence(sequence) {
+    // Loop through the sequence and light up the buttons
+    await clearTimeouts();
+    await dimAll();
+    lockButtons = true;
+    for (let i = 0; i < sequence.length; i++) {
+        await briefLight(buttons[sequence[i]]);
+        await delay(BETWEEN_FLASH_TIME);
+    }
+    sequenceResponseBuffer = [];
+    lockButtons = false;
+}
+
 // You do not have to modify this code, it's just helper functions for the lights and their timing
 const delay = (ms) => {
     return new Promise((res, rej) => {
@@ -13,19 +28,6 @@ async function clearTimeouts() {
         flashTimeoutBuffer[i]();
     }
     flashTimeoutBuffer = [];
-}
-
-async function displaySequence(sequence) {
-    // Loop through the sequence and light up the buttons
-    await clearTimeouts();
-    await dimAll();
-    lockButtons = true;
-    for (let i = 0; i < sequence.length; i++) {
-        await briefLight(buttons[sequence[i]]);
-        await delay(BETWEEN_FLASH_TIME);
-    }
-    sequenceResponseBuffer = [];
-    lockButtons = false;
 }
 
 async function briefLight(button, className="lit") {

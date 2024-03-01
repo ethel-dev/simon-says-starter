@@ -5,6 +5,8 @@
 
 // Constants
 const AMOUNT_OF_MOVES = 5;
+
+// Time constants (ms)
 const FLASH_TIME = 500;
 const BETWEEN_FLASH_TIME = 200;
 const BETWEEN_ROUNDS = 2100;
@@ -15,7 +17,7 @@ const BETWEEN_ROUNDS = 2100;
 
 // This is a flag to prevent the user from clicking the buttons while the game is playing
 // Try unlocking this right away when starting and clicking the buttons.
-let lockButtons = true;
+let lockButtons = false;
 
 // This is an array to store the buttons
 let buttons = Array();
@@ -55,14 +57,32 @@ function main() {
     buttons.forEach(button => {
         button.addEventListener('click', async function(e) {
             if (!lockButtons) {
+                // e is the event callback object
+                // e.target is the button that was clicked
+                // e.target.id is the id of the button that was clicked
                 await briefLight(e.target);
 
                 // How would we get the corresponding number for the button?
                 // TODO...
+                let idOfButton = parseInt(e.target.id, 10);
 
                 // Now we have to judge the response based on the input.
                 // What are conditions where we need to call our game end functions?
                 // TODO...
+                sequenceResponseBuffer.push(idOfButton);
+
+                // YOU GOT ONE WRONG
+                if (idOfButton !== sequence[sequenceResponseBuffer.length]) {
+                    await judgeResponse();
+                }
+
+                score++;
+                await displayScore();
+
+                // ALL CORRECT
+                if (sequenceResponseBuffer.length === sequence.length) {
+                    await judgeResponse();
+                }
             }
         });
     });
@@ -81,7 +101,11 @@ function main() {
 // Generate new sequence
 async function startGame() {
     // How would you generate a new sequence with randomSequence and start a new round?
-    // No need to modify score here
+    // No need to reset score here
+    lockButtons = true;
+    sequence = await randomSequence(AMOUNT_OF_MOVES);
+    await displaySequence(sequence);
+    lockButtons = false;
 }
 
 // Random sequence of n numbers generator, to make the challenge question
