@@ -6,7 +6,7 @@
 // Constants
 const AMOUNT_OF_MOVES = 5;
 
-// Time constants (ms)
+// Time Constants (ms)
 const FLASH_TIME = 500;
 const BETWEEN_FLASH_TIME = 200;
 const BETWEEN_ROUNDS = 2100;
@@ -72,10 +72,12 @@ function main() {
                 sequenceResponseBuffer.push(idOfButton);
 
                 // YOU GOT ONE WRONG
-                if (idOfButton !== sequence[sequenceResponseBuffer.length]) {
+                if (idOfButton !== sequence[sequenceResponseBuffer.length - 1]) {
                     await judgeResponse();
+                } else {
+                    score++;
                 }
-
+                
                 score++;
                 await displayScore();
 
@@ -102,6 +104,8 @@ function main() {
 async function startGame() {
     // How would you generate a new sequence with randomSequence and start a new round?
     // No need to reset score here
+    displayScore();
+    sequenceResponseBuffer = [];
     lockButtons = true;
     sequence = await randomSequence(AMOUNT_OF_MOVES);
     await displaySequence(sequence);
@@ -128,6 +132,21 @@ async function judgeResponse() {
     // TODO... judgement tree
     // keep in mind the allFlash(class) function that animates .correct or .incorrect classes onto the grid
     // how would you compare the sequenceResponseBuffer and the code sequence?
+    if (sequenceResponseBuffer.join("") === sequence.join("")) {
+        await allFlash("correct");
+        await delay(BETWEEN_ROUNDS);
+        await startGame();
+    } else {
+        await allFlash("incorrect");
+        await delay(BETWEEN_ROUNDS);
+
+        score = 0;
+        displayScore();
+
+
+        // if ()
+        await startGame();
+    }
 }
 
 // This displays score and also manages high score local storage
