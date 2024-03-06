@@ -40,6 +40,7 @@ let flashTimeoutBuffer = [];
 function main() {
     // Select all the buttons
     buttons = document.querySelectorAll('.grid-item');
+    console.log(document.getElementById("auto-restart"))
     score = 0;
     controller = new AbortController()
 
@@ -134,18 +135,16 @@ async function judgeResponse() {
     // how would you compare the sequenceResponseBuffer and the code sequence?
     if (sequenceResponseBuffer.join("") === sequence.join("")) {
         await allFlash("correct");
-        await delay(BETWEEN_ROUNDS);
         await startGame();
     } else {
         await allFlash("incorrect");
-        await delay(BETWEEN_ROUNDS);
 
         score = 0;
         displayScore();
 
-
-        // if ()
-        await startGame();
+        if (document.getElementById("auto-restart").checked) {
+            await startGame();
+        }
     }
 }
 
