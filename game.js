@@ -78,8 +78,7 @@ function main() {
                 } else {
                     score++;
                 }
-                
-                score++;
+
                 await displayScore();
 
                 // ALL CORRECT
